@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -21,14 +21,10 @@ export default function Home() {
         <h4 className="text-xl font-bold">HayatCare</h4>
         <NavigationMenu>
           <NavigationMenuList className="flex gap-4">
-            <NavigationMenuItem>
-              <Link href="/">
-                <Button>Log in</Button>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/">
-                <Button>Saznaj više</Button>
+            {/* theme button */}
+            <NavigationMenuItem asChild>
+              <Link href="/login" className={buttonVariants()}>
+                Login
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
@@ -55,7 +51,7 @@ export default function Home() {
                   Saveti za vitalnost i prevenciju
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="text-muted-foreground">
                 Otkrijte kako pravilna ishrana, redovno kretanje i preventivne
                 kontrole mogu poboljšati kvalitet života i očuvati vaše zdravlje
                 u svakodnevici.
@@ -70,7 +66,7 @@ export default function Home() {
                 </CardTitle>
                 <CardDescription>Pokret, kreativnost i rutina</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="text-muted-foreground">
                 Vežbe, hobi ideje i društvene igre osmišljene da podstaknu
                 fizičku aktivnost, mentalnu svežinu i svakodnevnu radost.
               </CardContent>
@@ -86,7 +82,7 @@ export default function Home() {
                   Uvek dostupna pomoć kad vam zatreba
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="text-muted-foreground">
                 Pronađite informacije, kontakte i korisne savete za rešavanje
                 svakodnevnih problema ili kontaktiranje stručnih službi – brzo i
                 jednostavno.
