@@ -18,8 +18,25 @@ import { toast } from "sonner";
 export default function LoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
-  const [facebookPending, startFacebookPending] = useTransition();
+  const [facebookPending, startFacebookTransition] = useTransition();
   const [emailPending, startEmailTransition] = useTransition();
+
+  function signInWithFacebook() {
+    startFacebookTransition(async () => {
+      await authClient.signIn.social({
+        provider: "facebook",
+        callbackURL: "/",
+        fetchOptions: {
+          onSuccess: () => {
+            toast.success("Signed in with Facebook, you will be redirected...");
+          },
+          onError: () => {
+            toast.error("Internal server error");
+          },
+        },
+      });
+    });
+  }
 
   function signInWithEmail() {
     startEmailTransition(async () => {
@@ -45,7 +62,12 @@ export default function LoginForm() {
         <CardDescription>Login with your Facebook / Email</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        <Button disabled={facebookPending} className="w-full" variant="outline">
+        <Button
+          disabled={facebookPending}
+          className="w-full"
+          variant="outline"
+          onClick={signInWithFacebook}
+        >
           {facebookPending ? (
             <>
               <Loader className="size-4 animate-spin" />
