@@ -1,4 +1,5 @@
 "use client";
+import { ModeToggle } from "@/components/ThemeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -18,9 +19,10 @@ export default function Navbar() {
       <NavigationMenu>
         <NavigationMenuList className="flex gap-4">
           <NavigationMenuItem asChild>
-            <Link href="/login" className={buttonVariants()}>
+            <ModeToggle />
+            {/* <Link href="/login" className={buttonVariants()}>
               Login
-            </Link>
+            </Link> */}
             {/* {isPending ? null : session ? (
               <Avatar>
                 <AvatarImage src={session?.user.image || ""} />
