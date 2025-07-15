@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { ModeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "../ThemeToggle";
 
 export function SiteHeader() {
   return (
@@ -24,7 +24,7 @@ export function SiteHeader() {
               GitHub
             </a>
           </Button> */}
-          <ModeToggle />
+          <ThemeToggle />
         </div>
       </div>
     </header>
