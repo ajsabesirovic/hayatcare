@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { HashCleanup } from "@/components/HashCleanup";
 
 export const metadata: Metadata = {
   title: "Hayat Care",
@@ -22,6 +23,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <HashCleanup />
           {children}
         </ThemeProvider>
       </body>
