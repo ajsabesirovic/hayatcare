@@ -7,6 +7,13 @@ import {
   FormLabel,
   FormControl,
 } from "@/components/ui/form";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
@@ -29,21 +36,20 @@ export default function Profile() {
 
   return (
     <>
-      <div className="flex flex-col space-y-6  max-w-6xl mx-auto px-6">
-        <h3 className="text-lg font-semibold mb-4 ">Osnovne informacije</h3>
-        <p className="text-sm sm:text-base text-muted-foreground">
-          Ova stranica je namenjena prikupljanju osnovnih informacija o Vama
-          kako bismo Vas povezali sa starijim osobama kojima je potrebna pomoć,
-          podrška i topla ljudska reč. Popunjavanjem profila, pomažete nam da
-          pronađemo aktivnosti koje najbolje odgovaraju Vašim veštinama,
-          interesovanjima i raspoloživom vremenu. Molimo Vas da pažljivo unesete
-          podatke, svi unosi se čuvaju poverljivo i koriste isključivo u svrhu
-          organizacije volonterskog rada.
-        </p>
-      </div>
-
-      <div className="flex flex-col justify-center items-center px-4">
-        <div className="w-full max-w-6xl p-6 sm:p-8">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-md">Osnovne informacije</CardTitle>
+          <CardDescription className="text-sm">
+            Ova stranica je namenjena prikupljanju osnovnih informacija o Vama
+            kako bismo Vas povezali sa starijim osobama kojima je potrebna
+            pomoć, podrška i topla ljudska reč. Popunjavanjem profila, pomažete
+            nam da pronađemo aktivnosti koje najbolje odgovaraju Vašim
+            veštinama, interesovanjima i raspoloživom vremenu. Molimo Vas da
+            pažljivo unesete podatke, svi unosi se čuvaju poverljivo i koriste
+            isključivo u svrhu organizacije volonterskog rada.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
           <Form {...form}>
             <form className="space-y-6">
               <FormField
@@ -163,15 +169,13 @@ export default function Profile() {
                 )}
               />
 
-              <div className="flex justify-center">
-                <Button type="submit" className="w-full max-w-6xl">
-                  Pošalji
-                </Button>
-              </div>
+              <Button type="submit" className="w-full max-w-6xl">
+                Pošalji
+              </Button>
             </form>
           </Form>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </>
   );
 }

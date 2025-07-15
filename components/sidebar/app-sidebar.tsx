@@ -32,6 +32,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 const data = {
   user: {
@@ -42,12 +43,12 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/user/dashboard",
       icon: IconDashboard,
     },
     {
       title: "Profile",
-      url: "/profile",
+      url: "/user/profile",
       icon: IconUsers,
     },
     {
@@ -165,10 +166,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="#">
+              <Link href="/user">
                 <IconInnerShadowTop className="!size-5" />
                 <span className="text-base font-semibold">HayatCare</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

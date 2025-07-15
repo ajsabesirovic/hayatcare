@@ -12,7 +12,7 @@ export async function setUserRole(formData: FormData) {
 
   const allowed = await canSetRole();
   if (!allowed) {
-    redirect("/profile");
+    redirect("/user/profile");
   }
 
   const user = await getCurrentUser();
@@ -21,5 +21,5 @@ export async function setUserRole(formData: FormData) {
     data: { role },
   });
 
-  redirect("/profile");
+  redirect("/user/profile");
 }
