@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
-// import { ModeToggle } from "@/components/ThemeToggle";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Profile() {
   const form = useForm({
@@ -30,7 +30,6 @@ export default function Profile() {
 
   return (
     <>
-      {/* <ModeToggle /> */}
       <div className="flex flex-col space-y-6  max-w-6xl mx-auto px-6">
         <h3 className="text-lg font-semibold mb-4 ">Osnovne informacije</h3>
         <p className="text-sm sm:text-base text-muted-foreground">
