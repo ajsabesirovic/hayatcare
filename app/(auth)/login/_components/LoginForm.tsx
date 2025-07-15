@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
-import { FacebookIcon, Loader, Loader2, Send } from "lucide-react";
+import { Chrome, FacebookIcon, Loader, Loader2, Send } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
@@ -20,15 +20,32 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [facebookPending, startFacebookTransition] = useTransition();
   const [emailPending, startEmailTransition] = useTransition();
+  const [googlePending, startGoogleTransition] = useTransition();
 
   function signInWithFacebook() {
     startFacebookTransition(async () => {
       await authClient.signIn.social({
         provider: "facebook",
-        callbackURL: "/",
+        callbackURL: "/set-role",
         fetchOptions: {
           onSuccess: () => {
             toast.success("Signed in with Facebook, you will be redirected...");
+          },
+          onError: () => {
+            toast.error("Internal server error");
+          },
+        },
+      });
+    });
+  }
+  function signInWithGoogle() {
+    startGoogleTransition(async () => {
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/set-role",
+        fetchOptions: {
+          onSuccess: () => {
+            toast.success("Signed in with Google, you will be redirected...");
           },
           onError: () => {
             toast.error("Internal server error");
@@ -71,7 +88,7 @@ export default function LoginForm() {
           {facebookPending ? (
             <>
               <Loader className="size-4 animate-spin" />
-              <span>Loading...</span>-
+              <span>Loading...</span>
             </>
           ) : (
             <>
@@ -80,7 +97,24 @@ export default function LoginForm() {
             </>
           )}
         </Button>
-
+        <Button
+          disabled={googlePending}
+          className="w-full"
+          variant="outline"
+          onClick={signInWithGoogle}
+        >
+          {googlePending ? (
+            <>
+              <Loader className="size-4 animate-spin" />
+              <span>Loading...</span>
+            </>
+          ) : (
+            <>
+              <Chrome className="size-4" />
+              Sign in with Google
+            </>
+          )}
+        </Button>
         <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
           <span className="relative z-10 bg-card px-2 text-muted-foreground">
             Or continue with
