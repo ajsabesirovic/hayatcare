@@ -8,7 +8,7 @@ import {
 import { HeartPulse, HelpingHand, Activity } from "lucide-react";
 import { ElementType } from "react";
 import Navbar from "./_components/Navbar";
-// import Map from "@/components/Map";
+import { CareRoute } from "../volMap/page";
 
 interface InfoCard {
     title: string;
@@ -89,7 +89,7 @@ export default function Home() {
                     </div>
                 </section>
             </main>
-            {/* <Map /> */}
+            <CareRoute />
         </>
     );
 }

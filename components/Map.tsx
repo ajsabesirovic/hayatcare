@@ -3,8 +3,8 @@ import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { useState } from "react";
 
 const mapContainerStyle = {
-    width: "50%",
-    height: "300px",
+    width: "100%",
+    height: "400px",
     margin: "0 auto",
 };
 
