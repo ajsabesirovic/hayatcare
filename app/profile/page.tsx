@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
-import { ModeToggle } from "@/components/ThemeToggle";
 
 export default function Profile() {
   const form = useForm({
@@ -29,7 +28,6 @@ export default function Profile() {
   });
   return (
     <>
-      {/* <ModeToggle /> */}
       <div className="flex space-y-6 flex-col text-center justify-center max-w-screen-sm mx-auto px-4">
         <h1 className="text-2xl sm:text-3xl md:text-4xl mt-4">
           Dobrodošli, hvala Vam što želite da budete deo zajednice!

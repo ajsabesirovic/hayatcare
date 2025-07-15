@@ -25,7 +25,7 @@ export default function LoginForm() {
     startFacebookTransition(async () => {
       await authClient.signIn.social({
         provider: "facebook",
-        callbackURL: "/",
+        callbackURL: "/set-role",
         fetchOptions: {
           onSuccess: () => {
             toast.success("Signed in with Facebook, you will be redirected...");
@@ -71,7 +71,7 @@ export default function LoginForm() {
           {facebookPending ? (
             <>
               <Loader className="size-4 animate-spin" />
-              <span>Loading...</span>-
+              <span>Loading...</span>
             </>
           ) : (
             <>
