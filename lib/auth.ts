@@ -20,5 +20,10 @@ export const auth = betterAuth({
       clientId: env.AUTH_FACEBOOK_CLIENT_ID,
       clientSecret: env.AUTH_FACEBOOK_CLIENT_SECRET,
     },
+    google: {
+      prompt: "select_account",
+      clientId: env.AUTH_GOOGLE_CLIENT_ID,
+      clientSecret: env.AUTH_GOOGLE_CLIENT_SECRET,
+    },
   },
 });
