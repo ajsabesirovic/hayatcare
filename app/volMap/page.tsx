@@ -11,7 +11,7 @@ export function CareRoute() {
                 <h1 className="text-3xl font-bold mb-4 text-black-800">
                     Dobrodošli na Care Route
                 </h1>
-                <p className="text-black-600 text-lg">
+                <p className="text-black-600 text-lg ">
                     Ovde možete pregledati i organizovati sve rute vezane za
                     pružanje nege. Na jednom mestu pratite planirane posete,
                     rute do klijenata i optimizujte svoje kretanje.
@@ -28,21 +28,38 @@ export function CareRoute() {
                         </CardHeader>
                         <CardContent className="space-y-2 text-gray-700">
                             <ul className="list-disc pl-5 space-y-1 text-left">
-                                <li className="text-black font-semibold">
+                                <li className="text-black font-semibold dark:text-white">
                                     Klijent1{" "}
-                                    <Button className="bg-gray-700 text-white hover:bg-gray-500">
+                                    <Button
+                                        className="
+                                             bg-gray-700 text-white hover:bg-gray-500
+                                             dark:bg-white dark:text-black dark:hover:bg-gray-200
+                                             "
+                                    >
+                                        {" "}
                                         Pogledaj zadatak
                                     </Button>
                                 </li>
-                                <li className="text-black font-semibold">
+                                <li className="text-black font-semibold dark:text-white">
                                     Klijent2{" "}
-                                    <Button className="bg-gray-700 text-white hover:bg-gray-500">
+                                    <Button
+                                        className="
+                                             bg-gray-700 text-white hover:bg-gray-500
+                                             dark:bg-white dark:text-black dark:hover:bg-gray-200
+                                             "
+                                    >
                                         Pogledaj zadatak
                                     </Button>
                                 </li>
-                                <li className="text-black font-semibold">
+                                <li className="text-black font-semibold dark:text-white">
                                     Klijent3{" "}
-                                    <Button className="bg-gray-700 text-white hover:bg-gray-500">
+                                    <Button
+                                        className="
+                                             bg-gray-700 text-white hover:bg-gray-500
+                                             dark:bg-white dark:text-black dark:hover:bg-gray-200
+                                             "
+                                    >
+                                        {" "}
                                         Pogledaj zadatak
                                     </Button>
                                 </li>
