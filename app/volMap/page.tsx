@@ -1,9 +1,23 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Map from "@/components/Map";
 import Navbar from "../(open)/_components/Navbar";
-import { Button } from "@/components/ui/button";
+import PopUp from "@/components/PopUp";
 
 export function CareRoute() {
+    const clients = [
+        {
+            clientName: "Klijent1",
+            description: "Detalji za zadatak klijenta1.",
+        },
+        {
+            clientName: "Klijent2",
+            description: "Detalji za zadatak klijenta2.",
+        },
+        {
+            clientName: "Klijent3",
+            description: "Detalji za zadatak klijenta3.",
+        },
+    ];
     return (
         <>
             <Navbar />
@@ -20,7 +34,6 @@ export function CareRoute() {
                     Uskoro ćemo dodati interaktivnu mapu kako biste lakše
                     pratili sve svoje obaveze.
                 </p>
-
                 <div className="flex flex-col md:flex-row justify-center mt-8 gap-6">
                     <Card className="max-w-2xl w-full">
                         <CardHeader>
@@ -28,41 +41,15 @@ export function CareRoute() {
                         </CardHeader>
                         <CardContent className="space-y-2 text-gray-700">
                             <ul className="list-disc pl-5 space-y-1 text-left">
-                                <li className="text-black font-semibold dark:text-white">
-                                    Klijent1{" "}
-                                    <Button
-                                        className="
-                                             bg-gray-700 text-white hover:bg-gray-500
-                                             dark:bg-white dark:text-black dark:hover:bg-gray-200
-                                             "
+                                {clients.map((client, index) => (
+                                    <li
+                                        key={index}
+                                        className="text-black font-semibold dark:text-white"
                                     >
-                                        {" "}
-                                        Pogledaj zadatak
-                                    </Button>
-                                </li>
-                                <li className="text-black font-semibold dark:text-white">
-                                    Klijent2{" "}
-                                    <Button
-                                        className="
-                                             bg-gray-700 text-white hover:bg-gray-500
-                                             dark:bg-white dark:text-black dark:hover:bg-gray-200
-                                             "
-                                    >
-                                        Pogledaj zadatak
-                                    </Button>
-                                </li>
-                                <li className="text-black font-semibold dark:text-white">
-                                    Klijent3{" "}
-                                    <Button
-                                        className="
-                                             bg-gray-700 text-white hover:bg-gray-500
-                                             dark:bg-white dark:text-black dark:hover:bg-gray-200
-                                             "
-                                    >
-                                        {" "}
-                                        Pogledaj zadatak
-                                    </Button>
-                                </li>
+                                        {client.clientName}{" "}
+                                        <PopUp {...client} />
+                                    </li>
+                                ))}
                             </ul>
                         </CardContent>
                     </Card>
