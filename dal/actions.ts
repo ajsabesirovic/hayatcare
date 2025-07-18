@@ -1,10 +1,11 @@
 "use server";
 import { redirect } from "next/navigation";
-import { canSetRole, getCurrentDbUser } from "@/dal/user";
+import { canSetRole, findUserById } from "@/dal/user";
 import { prisma } from "@/lib/db";
 import { getCurrentUser } from "./auth";
 import { profileSchema } from "@/lib/zod.schema";
 import z from "zod";
+import { getUpdatedFields } from "@/lib/utils";
 
 export async function setUserRole(formData: FormData) {
   const role = formData.get("role");
@@ -37,15 +38,25 @@ export async function setUpProfile(values: z.infer<typeof profileSchema>) {
   if (!id) {
     return { status: "error", message: "User not found" };
   }
-  const data = {
-    name: values.name || undefined,
-    email: values.email || undefined,
-    age: values.age || undefined,
-    phone: values.phone || undefined,
-    address: values.address || undefined,
-    city: values.city || undefined,
-    country: values.country || undefined,
-  };
+  const existingUser = await findUserById(id, {
+    name: true,
+    email: true,
+    phone: true,
+    age: true,
+    street: true,
+    houseNumber: true,
+    city: true,
+    country: true,
+  });
+  if (!existingUser) {
+    return { status: "error", message: "User not found in database" };
+  }
+
+  const data = getUpdatedFields(values, existingUser);
+
+  if (Object.keys(data).length === 0) {
+    return { status: "success", message: "Nothing to update" };
+  }
   await prisma.user.update({
     where: { id },
     data,
