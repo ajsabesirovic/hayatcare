@@ -17,7 +17,8 @@ model User {
   image         String?
   age           String?
   phone         String?
-  address       String?
+  street       String?
+  houseNumber  String?
   city          String?
   country       String?
   skills        String?

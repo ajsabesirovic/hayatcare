@@ -5,6 +5,7 @@ import {
   IconCalendar,
   IconDashboard,
   IconInnerShadowTop,
+  IconListDetails,
   IconUsers,
 } from "@tabler/icons-react";
 
@@ -29,6 +30,11 @@ const data = {
       title: "Dashboard",
       url: "/user/dashboard",
       icon: IconDashboard,
+    },
+    {
+      title: "Tasks",
+      url: "/user/tasks",
+      icon: IconListDetails,
     },
     {
       title: "Profile",
