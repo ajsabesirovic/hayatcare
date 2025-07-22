@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/popover";
 
 import { FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { taskCategories } from "@/lib/zod.schema";
 
 export function SkillsMultiSelect({ field, skills }: any) {
   const [open, setOpen] = React.useState(false);
@@ -44,7 +45,7 @@ export function SkillsMultiSelect({ field, skills }: any) {
             <CommandInput placeholder="Pretraži veštine..." />
             <CommandEmpty>Nema rezultata</CommandEmpty>
             <CommandGroup>
-              {skills.map((skill: string) => (
+              {taskCategories.map((skill: string) => (
                 <CommandItem
                   key={skill}
                   onSelect={() => {
