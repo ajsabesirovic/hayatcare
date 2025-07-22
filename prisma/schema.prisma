@@ -28,6 +28,8 @@ model User {
   sessions      Session[]
   accounts      Account[]
   role          Role?
+  tasks        Task[] 
+
 
   @@unique([email])
   @@map("user")
@@ -77,7 +79,22 @@ model Verification {
 
   @@map("verification")
 }
+model Task {
+  id        String   @id @default(cuid())
+  title     String
+  start     DateTime
+  end       DateTime
+  color     String
+  description String
+  category String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("task")
+}
 enum Role {
   volunteer
   user

@@ -76,27 +76,11 @@ export default function LoginForm() {
     <Card>
       <CardHeader>
         <CardTitle className="text-xl">Welcome back</CardTitle>
-        <CardDescription>Login with your Facebook / Email</CardDescription>
+        <CardDescription>
+          Login with your Google/Facebook account
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        <Button
-          disabled={facebookPending}
-          className="w-full"
-          variant="outline"
-          onClick={signInWithFacebook}
-        >
-          {facebookPending ? (
-            <>
-              <Loader className="size-4 animate-spin" />
-              <span>Loading...</span>
-            </>
-          ) : (
-            <>
-              <FacebookIcon className="size-4" />
-              Sign in with Facebook
-            </>
-          )}
-        </Button>
         <Button
           disabled={googlePending}
           className="w-full"
@@ -112,6 +96,24 @@ export default function LoginForm() {
             <>
               <Chrome className="size-4" />
               Sign in with Google
+            </>
+          )}
+        </Button>
+        <Button
+          disabled={facebookPending}
+          className="w-full"
+          variant="outline"
+          onClick={signInWithFacebook}
+        >
+          {facebookPending ? (
+            <>
+              <Loader className="size-4 animate-spin" />
+              <span>Loading...</span>
+            </>
+          ) : (
+            <>
+              <FacebookIcon className="size-4" />
+              Sign in with Facebook
             </>
           )}
         </Button>

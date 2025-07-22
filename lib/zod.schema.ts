@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const skills = [
+export const taskCategories = [
   "companionship",
   "reading",
   "errands",
@@ -136,7 +136,6 @@ export const countryCityMap: Record<string, string[]> = {
     "Szombathely",
   ],
 };
-
 export const countries = Object.keys(countryCityMap) as [string, ...string[]];
 export const allCities = countries.flatMap(
   (country) => countryCityMap[country]
@@ -163,6 +162,19 @@ export const profileSchema = z.object({
     .min(2, { message: "House number must be at least 2 characters long." }),
   city: z.enum(allCities, { message: "Please select a city." }),
   country: z.enum(countries, { message: "Please select a country." }),
-  // skills: z.enum(skills, { message: "At least one skill is required" }),
+  // taskCategories: z.enum(taskCategories, { message: "At least one skill is required" }),
   // availability
+});
+
+export const taskSchema = z.object({
+  title: z.string().min(1, "Please provide a title"),
+  category: z.enum(taskCategories, {
+    message: "Please select a category that suits your task",
+  }),
+  description: z
+    .string()
+    .min(10, { message: "Description must be at least 10 characters." }),
+  start_time: z.string().min(1, "Start time is required"),
+  duration: z.coerce.number().optional(),
+  multi_day: z.boolean().optional(),
 });

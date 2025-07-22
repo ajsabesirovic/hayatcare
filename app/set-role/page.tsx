@@ -6,7 +6,7 @@ import { setUserRole } from "@/dal/actions";
 
 export default async function RolePage() {
   if (await hasRole()) {
-    redirect("/user/profile");
+    redirect("/user");
   }
   return (
     <div className="flex flex-col items-center justify-center h-screen">
