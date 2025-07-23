@@ -1,6 +1,11 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Map from "@/components/Map";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tasks",
+};
 
 export default function CareRoute() {
   return (

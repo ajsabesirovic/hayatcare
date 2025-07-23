@@ -5,7 +5,10 @@ import { HashCleanup } from "@/components/HashCleanup";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "Hayat Care",
+  title: {
+    template: "%s | HayatCare",
+    default: "HayatCare",
+  },
   description:
     "Aplikacija za povezivanje volontera i starijih osoba kojima je potrebna pomoć u svakodnevnom životu.",
 };
