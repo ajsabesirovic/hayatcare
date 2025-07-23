@@ -174,6 +174,7 @@ export const taskSchema = z.object({
   description: z
     .string()
     .min(10, { message: "Description must be at least 10 characters." }),
+  location: z.string().optional(),
   start_time: z.string().min(1, "Start time is required"),
   duration: z.coerce.number().optional(),
   multi_day: z.boolean().optional(),

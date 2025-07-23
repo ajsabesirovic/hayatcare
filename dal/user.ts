@@ -21,6 +21,7 @@ export async function getCurrentDbUser() {
   if (!id) return null;
 
   return findUserById(id, {
+    id: true,
     name: true,
     email: true,
     phone: true,

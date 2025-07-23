@@ -87,6 +87,7 @@ model Task {
   color     String
   description String
   category String
+  location String?
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 

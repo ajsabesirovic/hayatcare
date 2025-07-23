@@ -52,6 +52,7 @@ export function AddTask() {
       title: "",
       category: "errands",
       description: "",
+      location: "",
       start_time: formatInitialDate(),
       duration: 0,
       multi_day: false,
@@ -75,13 +76,13 @@ export function AddTask() {
       <DialogTrigger asChild>
         <Button>
           <Plus className="mr-2 h-4 w-4" />
-          Dodaj obavezu
+          Add task
         </Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Nova obaveza</DialogTitle>
+          <DialogTitle>New Task</DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
@@ -91,9 +92,9 @@ export function AddTask() {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Naslov</FormLabel>
+                  <FormLabel>Title</FormLabel>
                   <FormControl>
-                    <Input placeholder="Kratak naziv obaveze" {...field} />
+                    <Input placeholder="Task title" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -106,9 +107,11 @@ export function AddTask() {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Textarea {...field} />
+                    <Textarea
+                      {...field}
+                      placeholder="Detailed task description"
+                    />
                   </FormControl>
-                  <FormDescription>Detaljan opis zadatka</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -119,11 +122,11 @@ export function AddTask() {
               name="category"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>Kategorija</FormLabel>
+                  <FormLabel>Category</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
                       <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Izaberi Kategoriju"></SelectValue>
+                        <SelectValue placeholder="Choose Category"></SelectValue>
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -142,10 +145,24 @@ export function AddTask() {
             />
             <FormField
               control={form.control}
+              name="location"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Location</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Location" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
               name="start_time"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Početak</FormLabel>
+                  <FormLabel>Start</FormLabel>
                   <FormControl>
                     <Input type="datetime-local" {...field} />
                   </FormControl>
@@ -159,7 +176,7 @@ export function AddTask() {
               name="duration"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Trajanje (u minutima) — opciono</FormLabel>
+                  <FormLabel>Duration (in minutes) — optional</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -190,7 +207,7 @@ export function AddTask() {
                     />
                   </FormControl>
                   <FormLabel htmlFor="multi_day">
-                    Dodaj ovaj zadatak na više dana
+                    Add the task to multiple days
                   </FormLabel>
                   <FormMessage />
                 </FormItem>
@@ -198,7 +215,7 @@ export function AddTask() {
             />
 
             <Button type="submit" className="w-full">
-              {isPending ? "Cuvanje..." : "Sačuvaj"}
+              {isPending ? "Saving task..." : "Save"}
             </Button>
           </form>
         </Form>

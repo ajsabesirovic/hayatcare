@@ -1,6 +1,6 @@
 "use server";
 import { redirect } from "next/navigation";
-import { canSetRole, findUserById } from "@/dal/user";
+import { canSetRole, findUserById, getCurrentDbUser } from "@/dal/user";
 import { prisma } from "@/lib/db";
 import { getCurrentUser } from "./auth";
 import { profileSchema, taskSchema } from "@/lib/zod.schema";
@@ -71,7 +71,16 @@ export async function getTasksForCurrentUser(): Promise<ScheduleEvent[]> {
   const id = user?.id;
   const events = await prisma.task.findMany({
     where: { userId: id },
-    select: { id: true, title: true, start: true, end: true, color: true },
+    select: {
+      id: true,
+      title: true,
+      start: true,
+      end: true,
+      color: true,
+      description: true,
+      location: true,
+      category: true,
+    },
   });
   return events as ScheduleEvent[];
 }
@@ -82,7 +91,7 @@ export async function addTask(values: z.infer<typeof taskSchema>) {
     return { status: "error", message: "Something went wrong" };
   }
 
-  const user = await getCurrentUser();
+  const user = await getCurrentDbUser();
   const id = user?.id;
 
   if (!id) {
@@ -97,6 +106,9 @@ export async function addTask(values: z.infer<typeof taskSchema>) {
       title: data.title,
       description: data.description,
       category: data.category,
+      location: data.location
+        ? data.location
+        : `${user.street} ${user.houseNumber}`,
       start: new Date(data.start_time),
       end: addMinutes(new Date(data.start_time), data.duration ?? 0),
       color: "default",
